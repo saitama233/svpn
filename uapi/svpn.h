@@ -1,0 +1,51 @@
+#ifndef _UAPI_SVPN_H
+#define _UAPI_SVPN_H
+
+#ifndef CRYPTO_MAX_ALG_NAME
+# define CRYPTO_MAX_ALG_NAME 64
+#endif
+#define KPP_METHOD_LEN 8
+
+#define SVPN_GENL_NAME "svpn"
+#define SVPN_GENL_VERSION 1
+
+enum wg_cmd {
+    SVPN_CMD_GETCONF,
+    SVPN_CMD_SETCONF,
+    __SVPN_CMD_MAX,
+};
+#define SVPN_CMD_MAX (__SVPN_CMD_MAX - 1)
+
+enum svpn_attribute {
+    SVPN_A_UNSPEC,
+    SVPN_A_IFNAME,
+	SVPN_A_ENDPOINT,
+    SVPN_A_FLAGS,
+    SVPN_A_PEERS,
+    __SVPN_A_LAST,
+};
+#define SVPN_A_MAX (__SVPN_A_LAST - 1)
+
+enum svpnpeer_attribute {
+    SVPNPEER_A_FLAGS,
+    SVPNPEER_A_ENDPOINT,
+    SVPNPEER_A_L4NUM,
+    SVPNPEER_A_ENC,
+    SVPNPEER_A_KPP,
+    SVPNPEER_A_FWMARK,
+    SVPNPEER_A_CONNMODE,
+    SVPNPEER_A_LSUBNET,
+    SVPNPEER_A_PSUBNET,
+    __SVPNPEER_A_LAST,
+};
+#define SVPNPEER_A_MAX (__SVPNPEER_A_LAST - 1)
+
+enum svpnsubnet_attribute {
+    SVPNSUBNET_A_FAMILY,
+    SVPNSUBNET_A_ADDR,
+    SVPNSUBNET_A_CIDR,
+    __SVPNSUBNET_A_LAST,
+};
+#define SVPNSUBNET_A_MAX (__SVPNSUBNET_A_LAST - 1)
+
+#endif
